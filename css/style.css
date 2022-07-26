@@ -1,0 +1,17 @@
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+#game {
+    border: 1px solid #222;
+    height: 600px;
+    width: 800px;
+}

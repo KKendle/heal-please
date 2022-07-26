@@ -5,8 +5,6 @@ class Ally extends Character {
     }
 
     takeTurn() {
-        this.checkDead();
         this.attack({self: this, target: enemy1});
-        this.checkDead();
     }
 }

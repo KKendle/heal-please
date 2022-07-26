@@ -8,8 +8,6 @@ class Player extends Character {
     }
 
     takeTurn() {
-        this.checkDead();
         this.heal({self: this, target: ally1});
-        this.checkDead();
     }
 }

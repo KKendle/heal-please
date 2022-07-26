@@ -37,10 +37,19 @@ function displayHealthbar() {
 
 displayHealthbar();
 
+function nextTurn() {
+    charactersInBattle.forEach(character => {
+        character.checkDead({self: character});
+    })
+}
+
 window.addEventListener('keypress', (event) => {
     if (event.code === 'Space') {
         player.takeTurn();
+        nextTurn();
         enemy1.takeTurn();
+        nextTurn();
         ally1.takeTurn();
+        nextTurn();
     }
 })

@@ -34,10 +34,10 @@ class Character {
         targetHealth.textContent = parseInt(targetHealth.textContent) + self.healPower;
     }
 
-    checkDead() {
+    checkDead({self}) {
         if (this.health <= 0) {
+            self.isDead = true;
             console.log('dead', this);
-            this.isDead = true;
         }
     }
 }

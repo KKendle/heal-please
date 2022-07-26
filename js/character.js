@@ -2,8 +2,8 @@ class Character {
     constructor(config) {
         this.id = `character-${config.id}`;
         this.health = config.health || 10;
-        this.attack = config.attack || 1;
-        this.heal = config.heal || 0;
+        this.attackPower = config.attack || 1;
+        this.healPower = config.heal || 0;
         this.level = config.level || 1;
         this.experience = config.experience || 0;
         this.experienceValue = config.experienceValue || 5;
@@ -15,11 +15,16 @@ class Character {
 
     }
 
-    attack() {
-
+    attack({self, target}) {
+        console.log('attacking');
+        console.log(self);
+        console.log(target);
     }
 
-    heal() {
+    heal({self, target}) {
+        target.health += self.healPower;
 
+        let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);
+        targetHealth.textContent = parseInt(targetHealth.textContent) + self.healPower;
     }
 }

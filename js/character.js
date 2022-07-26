@@ -19,6 +19,11 @@ class Character {
         console.log('attacking');
         console.log(self);
         console.log(target);
+
+        target.health -= self.attackPower;
+
+        let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);
+        targetHealth.textContent = parseInt(targetHealth.textContent) - self.attackPower;
     }
 
     heal({self, target}) {

@@ -3,4 +3,10 @@ class Ally extends Character {
         super(config);
         this.type = 'ally';
     }
+
+    takeTurn() {
+        this.checkDead();
+        this.attack({self: this, target: enemy1});
+        this.checkDead();
+    }
 }

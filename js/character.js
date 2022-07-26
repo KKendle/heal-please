@@ -9,6 +9,7 @@ class Character {
         this.experienceValue = config.experienceValue || 5;
         this.type = config.type || 'enemy';
         this.class = config.class || 'warrior';
+        this.isDead = false;
     }
 
     update() {
@@ -31,5 +32,12 @@ class Character {
 
         let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);
         targetHealth.textContent = parseInt(targetHealth.textContent) + self.healPower;
+    }
+
+    checkDead() {
+        if (this.health <= 0) {
+            console.log('dead', this);
+            this.isDead = true;
+        }
     }
 }

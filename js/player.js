@@ -6,4 +6,10 @@ class Player extends Character {
         this.type = 'player';
         this.class = 'healer';
     }
+
+    takeTurn() {
+        this.checkDead();
+        this.heal({self: this, target: ally1});
+        this.checkDead();
+    }
 }

@@ -41,6 +41,6 @@ window.addEventListener('keypress', (event) => {
     if (event.code === 'Space') {
         player.heal({self: player, target: ally1});
         enemy1.attack({self: enemy1, target: ally1});
-        // ally1.attack({self: ally1});
+        ally1.attack({self: ally1, target: enemy1});
     }
 })

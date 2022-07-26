@@ -8,6 +8,6 @@ class Player extends Character {
     }
 
     takeTurn() {
-        this.heal({self: this, target: ally1});
+        this.heal({self: this, target: charactersInBattle[2]});
     }
 }

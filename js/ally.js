@@ -5,6 +5,6 @@ class Ally extends Character {
     }
 
     takeTurn() {
-        this.attack({self: this, target: enemy1});
+        this.attack({self: this, target: charactersInBattle[1]});
     }
 }

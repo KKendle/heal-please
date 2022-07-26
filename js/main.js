@@ -1,4 +1,5 @@
 const GAME = document.querySelector('#game');
+let charactersInBattle = [];
 
 function displayGameTitle() {
     const gameTitle = document.createElement('h1');
@@ -8,14 +9,23 @@ function displayGameTitle() {
 
 displayGameTitle();
 
-const player = new Player({id: 1});
-const enemy1 = new Enemy({id: 2});
-const ally1 = new Ally({id: 3});
-let charactersInBattle = [];
+function getBattleCharacters() {
+    const player = new Player({id: 1});
+    const enemy1 = new Enemy({id: 2});
+    const ally1 = new Ally({id: 3});
 
-charactersInBattle.push(player, enemy1, ally1);
+    charactersInBattle.push(player, enemy1, ally1);
 
-console.log(`Player: ${player.health}, Enemy: ${enemy1.health}, Ally: ${ally1.health}, Characters: ${charactersInBattle[0].type}, ${charactersInBattle[1].type}, ${charactersInBattle[2].type}`);
+    charactersInBattle.forEach(character => {
+        console.log(`${character.type}, ${character.health}`);
+    })
+}
+
+function setupBattle() {
+    getBattleCharacters();
+}
+
+setupBattle();
 
 function displayHealthbar() {
     charactersInBattle.forEach(character => {
@@ -45,11 +55,9 @@ function nextTurn() {
 
 window.addEventListener('keypress', (event) => {
     if (event.code === 'Space') {
-        player.takeTurn();
-        nextTurn();
-        enemy1.takeTurn();
-        nextTurn();
-        ally1.takeTurn();
-        nextTurn();
+        charactersInBattle.forEach(character => {
+            character.takeTurn();
+            nextTurn();
+        });
     }
 })

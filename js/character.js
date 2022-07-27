@@ -37,7 +37,8 @@ class Character {
     checkDead({self}) {
         if (this.health <= 0) {
             self.isDead = true;
-            console.log('dead', this);
+            this.removeCharacter();
+            this.removeHealthbar();
         }
     }
 
@@ -51,8 +52,6 @@ class Character {
     }
 
     displayHealthbar() {
-        console.log('display healthbar');
-
         const healthbar = document.createElement('div');
         healthbar.id = `${this.id}-healthbar-${this.type}`;
         healthbar.classList.add('healthbar');
@@ -66,5 +65,18 @@ class Character {
         healthbar.appendChild(health);
 
         GAME.append(healthbar);
+    }
+
+    removeCharacter() {
+        let pos = charactersInBattle.map(function (character) {
+            return character.id;
+        }).indexOf(this.id);
+
+        charactersInBattle.splice(pos, 1);
+
+    }
+
+    removeHealthbar() {
+        document.querySelector(`#${this.id}-healthbar-${this.type}`).remove();
     }
 }

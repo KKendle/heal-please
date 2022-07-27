@@ -28,30 +28,18 @@ function setupBattle() {
 
 setupBattle();
 
-function removeHealthbar(character) {
-    console.log('removing healthbar');
-
-    document.querySelector(`#${character.id}-healthbar-${character.type}`).remove();
-}
-
-function removeCharacterInBattle({characters, id}) {
-    let pos = characters.map(function (e) {
-      return e.id;
-    }).indexOf(id);
-    console.log(`Index of ${id}  is ${pos}`);
-    charactersInBattle.splice(pos, 1);
-    console.log(charactersInBattle);
-  }
+// function removeCharacterInBattle({characters, id}) {
+//     let pos = characters.map(function (e) {
+//         return e.id;
+//     }).indexOf(id);
+//     console.log(`Index of ${id}  is ${pos}`);
+//     charactersInBattle.splice(pos, 1);
+//     console.log(charactersInBattle);
+// }
 
 function nextTurn() {
     charactersInBattle.forEach(character => {
         character.checkDead({self: character});
-
-        if (character.isDead) {
-            removeHealthbar(character);
-            console.log(charactersInBattle);
-            removeCharacterInBattle({characters: charactersInBattle, id: character.id})
-        }
     })
 }
 

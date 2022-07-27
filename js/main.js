@@ -18,6 +18,7 @@ function getBattleCharacters() {
 
     charactersInBattle.forEach(character => {
         console.log(`${character.type}, ${character.health}`);
+        character.display();
     })
 }
 
@@ -26,26 +27,6 @@ function setupBattle() {
 }
 
 setupBattle();
-
-function displayHealthbar() {
-    charactersInBattle.forEach(character => {
-        const healthbar = document.createElement('div');
-        healthbar.id = `${character.id}-healthbar-${character.type}`;
-        healthbar.classList.add('healthbar');
-        healthbar.classList.add('ui');
-        healthbar.dataset.type = character.type;
-        healthbar.appendChild(document.createTextNode(`${character.type} health: `));
-
-        const health = document.createElement('span');
-        health.classList.add('health');
-        health.appendChild(document.createTextNode(character.health));
-        healthbar.appendChild(health);
-
-        GAME.append(healthbar);
-    });
-}
-
-displayHealthbar();
 
 function removeHealthbar(character) {
     console.log('removing healthbar');

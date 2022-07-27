@@ -40,4 +40,31 @@ class Character {
             console.log('dead', this);
         }
     }
+
+    display() {
+        this.displayCharacter();
+        this.displayHealthbar();
+    }
+
+    displayCharacter() {
+        console.log('display character');
+    }
+
+    displayHealthbar() {
+        console.log('display healthbar');
+
+        const healthbar = document.createElement('div');
+        healthbar.id = `${this.id}-healthbar-${this.type}`;
+        healthbar.classList.add('healthbar');
+        healthbar.classList.add('ui');
+        healthbar.dataset.type = this.type;
+        healthbar.appendChild(document.createTextNode(`${this.type} health: `));
+
+        const health = document.createElement('span');
+        health.classList.add('health');
+        health.appendChild(document.createTextNode(this.health));
+        healthbar.appendChild(health);
+
+        GAME.append(healthbar);
+    }
 }

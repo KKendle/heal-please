@@ -28,15 +28,6 @@ function setupBattle() {
 
 setupBattle();
 
-// function removeCharacterInBattle({characters, id}) {
-//     let pos = characters.map(function (e) {
-//         return e.id;
-//     }).indexOf(id);
-//     console.log(`Index of ${id}  is ${pos}`);
-//     charactersInBattle.splice(pos, 1);
-//     console.log(charactersInBattle);
-// }
-
 function nextTurn() {
     charactersInBattle.forEach(character => {
         character.checkDead({self: character});

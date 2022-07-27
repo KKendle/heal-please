@@ -48,7 +48,13 @@ class Character {
     }
 
     displayCharacter() {
-        console.log('display character');
+        const character = document.createElement('div');
+        character.id = `${this.id}`;
+        character.classList.add('character');
+        character.classList.add(this.type);
+        character.classList.add(this.class);
+
+        GAME.append(character);
     }
 
     displayHealthbar() {
@@ -64,7 +70,8 @@ class Character {
         health.appendChild(document.createTextNode(this.health));
         healthbar.appendChild(health);
 
-        GAME.append(healthbar);
+        const character = document.querySelector(`#${this.id}`);
+        character.append(healthbar);
     }
 
     removeCharacter() {

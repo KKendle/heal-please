@@ -1,0 +1,21 @@
+.character {
+    margin: 1rem;
+}
+
+.character-image {
+    border: .125rem solid #222;
+    height: 50px;
+    width: 50px;
+}
+
+.character.player .character-image {
+    background-color: blue;
+}
+
+.character.ally .character-image {
+    background-color: green;
+}
+
+.character.enemy .character-image {
+    background-color: red;
+}

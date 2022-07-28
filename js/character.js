@@ -54,6 +54,10 @@ class Character {
         character.classList.add(this.type);
         character.classList.add(this.class);
 
+        const characterImage = document.createElement('div');
+        characterImage.classList.add('character-image')
+        character.appendChild(characterImage);
+
         GAME.append(character);
     }
 

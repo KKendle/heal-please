@@ -7,7 +7,7 @@ class Player extends Character {
         this.class = 'healer';
     }
 
-    takeTurn() {
-        this.heal({self: this, target: charactersInBattle[2]});
+    takeTurn({self, target}) {
+        this.heal({self: self, target: target});
     }
 }

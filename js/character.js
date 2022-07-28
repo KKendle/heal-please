@@ -80,9 +80,7 @@ class Character {
     }
 
     removeCharacter() {
-        let pos = charactersInBattle.map(function (character) {
-            return character.id;
-        }).indexOf(this.id);
+        targetCharacter({target: this});
 
         charactersInBattle.splice(pos, 1);
 

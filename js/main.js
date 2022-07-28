@@ -34,11 +34,36 @@ function nextTurn() {
     })
 }
 
-window.addEventListener('keypress', (event) => {
-    if (event.code === 'Space') {
-        charactersInBattle.forEach(character => {
-            character.takeTurn();
-            nextTurn();
-        });
+function targetCharacter({target}) {
+    let pos = charactersInBattle.map(function (character) {
+        return character.id;
+    }).indexOf(target.id);
+
+    return pos;
+}
+
+document.addEventListener('click', (event) => {
+    console.log('clicked');
+    const healButton = event.target.closest('button');
+    const character = event.target.closest('.character');
+
+    if (healButton) {
+        console.log('clicked heal button');
+        const healthbar = healButton.previousSibling;
+        const health = healthbar.querySelector('.health');
+        console.log(health.textContent);
+        console.log(character);
+
+        const characterPosition = targetCharacter({target: character});
+        console.log(characterPosition);
+        const player = charactersInBattle[0];
+        console.log(player);
+        player.takeTurn({self: player, target: charactersInBattle[characterPosition]});
     }
+    // if (event.code === 'Space') {
+    //     charactersInBattle.forEach(character => {
+    //         character.takeTurn();
+    //         nextTurn();
+    //     });
+    // }
 })

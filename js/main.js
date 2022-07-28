@@ -19,7 +19,7 @@ function getBattleCharacters() {
 
     charactersInBattle.forEach(character => {
         character.display();
-    })
+    });
 }
 
 function setupBattle() {
@@ -31,7 +31,20 @@ setupBattle();
 function nextTurn() {
     charactersInBattle.forEach(character => {
         character.checkDead({self: character});
-    })
+    });
+
+    const enemiesAlive = document.querySelectorAll('.enemy');
+    const playerAlive = document.querySelector('.player');
+
+    if (!enemiesAlive.length) {
+        console.log('no more enemies');
+        playerWin();
+    }
+
+    if (!playerAlive) {
+        console.log('player dead');
+        playerLose();
+    }
 }
 
 function targetCharacter({target}) {
@@ -40,6 +53,14 @@ function targetCharacter({target}) {
     }).indexOf(target.id);
 
     return position;
+}
+
+function playerWin() {
+    console.log('you win');
+}
+
+function playerLose() {
+    console.log('you lose');
 }
 
 document.addEventListener('click', (event) => {

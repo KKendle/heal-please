@@ -17,10 +17,6 @@ class Character {
     }
 
     attack({self, target}) {
-        console.log('attacking');
-        console.log(self);
-        console.log(target);
-
         target.health -= self.attackPower;
 
         let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);

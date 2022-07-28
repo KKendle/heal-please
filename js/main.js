@@ -3,6 +3,7 @@ let charactersInBattle = [];
 
 function displayGameTitle() {
     const gameTitle = document.createElement('h1');
+
     gameTitle.appendChild(document.createTextNode('Heal Please'));
     GAME.append(gameTitle);
 }
@@ -17,7 +18,6 @@ function getBattleCharacters() {
     charactersInBattle.push(player, enemy1, ally1);
 
     charactersInBattle.forEach(character => {
-        console.log(`${character.type}, ${character.health}`);
         character.display();
     })
 }
@@ -43,21 +43,13 @@ function targetCharacter({target}) {
 }
 
 document.addEventListener('click', (event) => {
-    console.log('clicked');
     const healButton = event.target.closest('button');
     const character = event.target.closest('.character');
 
     if (healButton) {
-        console.log('clicked heal button');
-        const healthbar = healButton.previousSibling;
-        const health = healthbar.querySelector('.health');
-        console.log(health.textContent);
-        console.log(character);
-
         const characterPosition = targetCharacter({target: character});
-        console.log(characterPosition);
         const player = charactersInBattle[0];
-        console.log(player);
+
         player.takeTurn({self: player, target: charactersInBattle[characterPosition]});
         nextTurn();
         charactersInBattle[1].takeTurn();
@@ -65,10 +57,4 @@ document.addEventListener('click', (event) => {
         charactersInBattle[2].takeTurn();
         nextTurn();
     }
-    // if (event.code === 'Space') {
-    //     charactersInBattle.forEach(character => {
-    //         character.takeTurn();
-    //         nextTurn();
-    //     });
-    // }
 })

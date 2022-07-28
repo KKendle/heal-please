@@ -35,11 +35,11 @@ function nextTurn() {
 }
 
 function targetCharacter({target}) {
-    let pos = charactersInBattle.map(function (character) {
+    let position = charactersInBattle.map(function (character) {
         return character.id;
     }).indexOf(target.id);
 
-    return pos;
+    return position;
 }
 
 document.addEventListener('click', (event) => {
@@ -59,6 +59,11 @@ document.addEventListener('click', (event) => {
         const player = charactersInBattle[0];
         console.log(player);
         player.takeTurn({self: player, target: charactersInBattle[characterPosition]});
+        nextTurn();
+        charactersInBattle[1].takeTurn();
+        nextTurn();
+        charactersInBattle[2].takeTurn();
+        nextTurn();
     }
     // if (event.code === 'Space') {
     //     charactersInBattle.forEach(character => {

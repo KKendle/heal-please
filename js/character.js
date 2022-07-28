@@ -80,9 +80,9 @@ class Character {
     }
 
     removeCharacter() {
-        targetCharacter({target: this});
+        const position = targetCharacter({target: this});
 
-        charactersInBattle.splice(pos, 1);
+        charactersInBattle.splice(position, 1);
 
     }
 

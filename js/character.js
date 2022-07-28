@@ -45,6 +45,7 @@ class Character {
     display() {
         this.displayCharacter();
         this.displayHealthbar();
+        this.displayButtonHeal();
     }
 
     displayCharacter() {
@@ -89,5 +90,16 @@ class Character {
 
     removeHealthbar() {
         document.querySelector(`#${this.id}-healthbar-${this.type}`).remove();
+    }
+
+    displayButtonHeal() {
+        const buttonHeal = document.createElement('button');
+        buttonHeal.type = 'button';
+        buttonHeal.classList.add('btn');
+        buttonHeal.classList.add('heal');
+        buttonHeal.appendChild(document.createTextNode('Heal'));
+
+        const character = document.querySelector(`#${this.id}`);
+        character.appendChild(buttonHeal);
     }
 }

@@ -19,3 +19,10 @@
 .character.enemy .character-image {
     background-color: red;
 }
+
+.character button {
+    background-color: #fff;
+    border-radius: 0;
+    border: .125rem solid #222;
+    padding: .375rem 1rem;
+}

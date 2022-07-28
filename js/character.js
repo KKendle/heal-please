@@ -34,7 +34,6 @@ class Character {
         if (this.health <= 0) {
             self.isDead = true;
             this.removeCharacter();
-            this.removeHealthbar();
         }
     }
 
@@ -77,13 +76,12 @@ class Character {
 
     removeCharacter() {
         const position = targetCharacter({target: this});
+        const character = document.querySelector(`#${this.id}`);
+
+        character.remove();
 
         charactersInBattle.splice(position, 1);
 
-    }
-
-    removeHealthbar() {
-        document.querySelector(`#${this.id}-healthbar-${this.type}`).remove();
     }
 
     displayButtonHeal() {

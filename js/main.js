@@ -1,5 +1,6 @@
 const GAME = document.querySelector('#game');
 let charactersInBattle = [];
+let battleOver = false;
 
 function displayGameTitle() {
     const gameTitle = document.createElement('h1');
@@ -38,11 +39,13 @@ function nextTurn() {
 
     if (!enemiesAlive.length) {
         console.log('no more enemies');
+        battleOver = true;
         playerWin();
     }
 
     if (!playerAlive) {
         console.log('player dead');
+        battleOver = true;
         playerLose();
     }
 }
@@ -71,11 +74,15 @@ document.addEventListener('click', (event) => {
         const characterPosition = targetCharacter({target: character});
         const player = charactersInBattle[0];
 
-        player.takeTurn({self: player, target: charactersInBattle[characterPosition]});
-        nextTurn();
-        charactersInBattle[1].takeTurn();
-        nextTurn();
-        charactersInBattle[2].takeTurn();
-        nextTurn();
+        charactersInBattle.forEach(character => {
+            if (!battleOver) {
+                if (character === player) {
+                    player.takeTurn({self: player, target: charactersInBattle[characterPosition]});
+                } else {
+                    character.takeTurn();
+                    nextTurn();
+                }
+            }
+        })
     }
 })

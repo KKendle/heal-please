@@ -24,21 +24,14 @@ class Enemy extends Character {
     }
 
     awardXp() {
-        console.log('awarding enemy xp');
-
         charactersInBattle.forEach(character => {
             if (character.type !== 'enemy') {
-                console.log('current xp before:', character.currentXp);
-                console.log('xp to be awarded', this.experienceValue);
-
                 // update character stats
                 character.currentXp += this.experienceValue;
 
                 // update UI
                 let characterXp = document.querySelector(`#${character.id} .current-xp`);
                 characterXp.textContent = parseInt(characterXp.textContent) + this.experienceValue;
-
-                console.log('current xp after', character.currentXp);
             }
         });
     }

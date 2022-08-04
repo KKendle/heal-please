@@ -19,15 +19,19 @@ class Character {
     }
 
     attack({self, target}) {
+        // update character stats
         target.health -= self.attackPower;
 
+        // update UI
         let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);
         targetHealth.textContent = parseInt(targetHealth.textContent) - self.attackPower;
     }
 
     heal({self, target}) {
+        // update character stats
         target.health += self.healPower;
 
+        // update UI
         let targetHealth = document.querySelector(`#${target.id}-healthbar-${target.type} .health`);
         targetHealth.textContent = parseInt(targetHealth.textContent) + self.healPower;
     }

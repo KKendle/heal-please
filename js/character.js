@@ -10,6 +10,8 @@ class Character {
         this.type = config.type || 'enemy';
         this.class = config.class || 'warrior';
         this.isDead = false;
+        this.currentXp = config.currentXp || 0;
+        this.nextLevelXp = config.nextLevelXp || 10;
     }
 
     update() {
@@ -39,7 +41,7 @@ class Character {
 
     display() {
         this.displayCharacter();
-        this.displayHealthbar();
+        this.displayUi();
         this.displayButtonHeal();
     }
 
@@ -84,6 +86,12 @@ class Character {
 
     }
 
+    displayUi() {
+        this.displayHealthbar();
+        this.displayLevel();
+        this.displayXp();
+    }
+
     displayButtonHeal() {
         const buttonHeal = document.createElement('button');
         buttonHeal.type = 'button';
@@ -93,5 +101,41 @@ class Character {
 
         const character = document.querySelector(`#${this.id}`);
         character.appendChild(buttonHeal);
+    }
+
+    displayLevel() {
+        const levelContainer = document.createElement('div');
+        levelContainer.classList.add('level-container');
+        levelContainer.classList.add('ui');
+        levelContainer.appendChild(document.createTextNode(`${this.type} level: `));
+
+        const levelText = document.createElement('span');
+        levelText.classList.add('level');
+        levelText.appendChild(document.createTextNode(this.level));
+        levelContainer.append(levelText);
+
+        const character = document.querySelector(`#${this.id}`);
+        character.append(levelContainer);
+    }
+
+    displayXp() {
+        const currentXpText = document.createElement('span');
+        currentXpText.classList.add('current-xp');
+        currentXpText.appendChild(document.createTextNode(this.currentXp));
+
+        const nextLevelText = document.createElement('span');
+        nextLevelText.classList.add('next-level-xp');
+        nextLevelText.appendChild(document.createTextNode(this.nextLevelXp));
+
+        const xpContainer = document.createElement('div');
+        xpContainer.classList.add('xp-container');
+        xpContainer.classList.add('ui');
+        xpContainer.appendChild(document.createTextNode(`${this.type} xp: `));
+        xpContainer.append(currentXpText);
+        xpContainer.append(' / ');
+        xpContainer.append(nextLevelText);
+
+        const character = document.querySelector(`#${this.id}`);
+        character.append(xpContainer);
     }
 }

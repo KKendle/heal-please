@@ -1,5 +1,5 @@
 const GAME = document.querySelector('#game');
-let charactersInBattle = [];
+const charactersInBattle = [];
 let battleOver = false;
 
 function displayGameTitle() {

@@ -35,6 +35,7 @@ class Character {
     checkDead({self}) {
         if (this.health <= 0) {
             self.isDead = true;
+            this.awardXp();
             this.removeCharacter();
         }
     }
